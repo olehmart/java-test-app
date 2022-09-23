@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/olehmart/java-test-app/compare/v1.2.0...v1.3.0) (2022-09-23)
+
+
+### Features
+
+* update ([54d1c93](https://github.com/olehmart/java-test-app/commit/54d1c9394277765dd9a4960bb1e19babca1ccd3d))
+
 # [1.2.0](https://github.com/olehmart/java-test-app/compare/v1.1.0...v1.2.0) (2022-09-23)
 
 
