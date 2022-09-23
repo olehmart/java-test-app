@@ -3,21 +3,12 @@
     "main"
   ],
   "debug": true,
+  "ci": true,
   "dryRun": false,
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
-    [
-      "@semantic-release/git",
-      {
-          "assets": [
-              "CHANGELOG.md",
-              "pom.xml"
-          ],
-          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
-      }
-    ],
     [
       "@semantic-release/exec",
       {
@@ -35,9 +26,16 @@
         "successComment": true,
         "addReleases": "top"
       }
+    ],
+    [
+      "@semantic-release/git",
+      {
+          "assets": [
+              "CHANGELOG.md",
+              "pom.xml"
+          ],
+          "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+      }
     ]
-  ],
-  "publish": [
   ]
 }
-
