@@ -72,7 +72,7 @@ jobs:
           APP_NAME: ${{ env.APP_NAME }}
           NEW_VERSION: ${{ needs.release.outputs.new_release_version }}
           DEPLOYMENTS_REPO: ${{ env.DEPLOYMENTS_REPO }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.P_TOKEN }}
           DEPLOYMENTS_DEV_BRANCH: ${{ env.DEPLOYMENTS_DEV_BRANCH }}
           DEPLOYMENTS_DEV_CONFIG_PATH: ${{ env.DEPLOYMENTS_DEV_CONFIG_PATH }}
           DEPLOYMENTS_MAIN_BRANCH: ${{ env.DEPLOYMENTS_MAIN_BRANCH }}
