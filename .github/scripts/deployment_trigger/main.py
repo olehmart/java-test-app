@@ -40,6 +40,8 @@ print("Cloning deployments repo to {} ...".format(clone_folder))
 DEPLOYMENTS_REPO = "git@github.com:{}/{}.git".format(DEPLOYMENTS_PROJECT, DEPLOYMENTS_REPO_NAME)
 deployments_repo = Repo.clone_from(DEPLOYMENTS_REPO, "{}".format(clone_folder),
                                    env={"GIT_SSH_COMMAND": 'ssh -o StrictHostKeyChecking=no '})
+deployments_repo.git.config("--global", "user.email", "github_bot@example.com")
+deployments_repo.git.config("--global", "user.name", "GitHub BOT")
 
 
 #########################################
