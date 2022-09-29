@@ -83,7 +83,7 @@ def check_pull_request_exist(project_name, repo_name, title, description, head_b
 required_env_variables = ["APP_NAME", "NEW_VERSION", "GITHUB_TOKEN", "DEPLOYMENTS_REPO", "DEPLOYMENTS_DEV_BRANCH",
                           "DEPLOYMENTS_DEV_CONFIG_PATH", "DEPLOYMENTS_MAIN_BRANCH"]
 for variable in required_env_variables:
-    if variable not in os.environ:
+    if variable not in os.environ or os.environ.get(variable) == "":
         print("ERROR! {} variable is not set. Exiting...".format(variable))
         sys.exit(1)
 
