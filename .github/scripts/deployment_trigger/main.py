@@ -11,7 +11,6 @@ import json
 #################
 APP_NAME = os.environ.get("APP_NAME")
 NEW_VERSION = os.environ.get("NEW_VERSION")
-# SSH_KEY = os.environ.get("SSH_KEY")
 DEPLOYMENTS_PROJECT = os.environ.get("DEPLOYMENTS_PROJECT")
 DEPLOYMENTS_REPO_NAME = os.environ.get("DEPLOYMENTS_REPO_NAME")
 DEPLOYMENTS_DEV_BRANCH = os.environ.get("DEPLOYMENTS_DEV_BRANCH")
@@ -41,8 +40,6 @@ print("Cloning deployments repo to {} ...".format(clone_folder))
 DEPLOYMENTS_REPO = "git@github.com:{}/{}.git".format(DEPLOYMENTS_PROJECT, DEPLOYMENTS_REPO_NAME)
 deployments_repo = Repo.clone_from(DEPLOYMENTS_REPO, "{}".format(clone_folder),
                                    env={"GIT_SSH_COMMAND": 'ssh -o StrictHostKeyChecking=no '})
-deployments_repo.git.config("--global", "user.email", "automation@example.com")
-deployments_repo.git.config("--global", "user.name", "GitHub BOT")
 
 
 #########################################
