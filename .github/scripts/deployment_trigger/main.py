@@ -84,7 +84,7 @@ deployments_repo.git.add('{}'.format(DEPLOYMENTS_DEV_CONFIG_PATH))
 #####################
 # Creating a commit #
 #####################
-deployments_repo.git.commit("-m", "\"auto: Updating {} to the new version -> {}\"".format(APP_NAME, NEW_VERSION))
+deployments_repo.git.commit("-m", "\"auto: DEV: Updating {} to the new version -> {}\"".format(APP_NAME, NEW_VERSION))
 
 #######################
 # Pushing the changes #
