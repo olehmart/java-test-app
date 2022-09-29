@@ -102,8 +102,8 @@ deployments_repo = Repo.clone_from(DEPLOYMENTS_REPO, "{}".format(clone_folder))
 ########
 # TEST #
 ########
-deployments_repo.git.config("--global", "user.email" "automation@example.com")
-deployments_repo.git.config("--global", "user.name" "GitHub BOT")
+deployments_repo.git.config("--global", "user.email", "automation@example.com")
+deployments_repo.git.config("--global", "user.name", "GitHub BOT")
 
 
 #########################################
