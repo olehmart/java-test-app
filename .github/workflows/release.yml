@@ -8,10 +8,10 @@ on:
 
 env:
   APP_NAME: helloworld
-  DEPLOYMENTS_REPO: https://github.com/olehmart/test-deployments
+  DEPLOYMENTS_PROJECT: olehmart
+  DEPLOYMENTS_REPO_NAME: test-deployments
   DEPLOYMENTS_DEV_BRANCH: auto-deployment-dev
   DEPLOYMENTS_DEV_CONFIG_PATH: dev/deployments.yaml
-  DEPLOYMENTS_MAIN_BRANCH: main
 
 jobs:
   release:
@@ -64,6 +64,13 @@ jobs:
         working-directory: '.github/scripts/deployment_trigger'
         run: pip install -r requirements.txt
 
+      - name: Setup SSH Keys and known_hosts
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_DEPLOY_KEY }}"
+
       # Triggers deployment
       - name: Trigger deployment
         working-directory: '.github/scripts/deployment_trigger'
@@ -71,8 +78,8 @@ jobs:
         env:
           APP_NAME: ${{ env.APP_NAME }}
           NEW_VERSION: ${{ needs.release.outputs.new_release_version }}
-          DEPLOYMENTS_REPO: ${{ env.DEPLOYMENTS_REPO }}
-          GITHUB_TOKEN: ${{ secrets.P_TOKEN }}
+          DEPLOYMENTS_PROJECT: ${{ env.DEPLOYMENTS_PROJECT }}
+          DEPLOYMENTS_REPO_NAME: ${{ env.DEPLOYMENTS_REPO_NAME }}
           DEPLOYMENTS_DEV_BRANCH: ${{ env.DEPLOYMENTS_DEV_BRANCH }}
           DEPLOYMENTS_DEV_CONFIG_PATH: ${{ env.DEPLOYMENTS_DEV_CONFIG_PATH }}
-          DEPLOYMENTS_MAIN_BRANCH: ${{ env.DEPLOYMENTS_MAIN_BRANCH }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
