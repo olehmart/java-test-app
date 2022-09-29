@@ -97,13 +97,13 @@ print("Cloning deployments repo to {} ...".format(clone_folder))
 DEPLOYMENTS_REPO = "https://{}:x-oauth-basic@github.com/{}/{}".format(GITHUB_TOKEN, deployment_git_project,
                                                                       deployment_git_repo_name)
 deployments_repo = Repo.clone_from(DEPLOYMENTS_REPO, "{}".format(clone_folder))
-
-
-########
-# TEST #
-########
-deployments_repo.git.config("--global", "user.email", "automation_test@example.com")
-deployments_repo.git.config("--global", "user.name", "GitHub BOT")
+#
+#
+# ########
+# # TEST #
+# ########
+# deployments_repo.git.config("--global", "user.email", "automation@example.com")
+# deployments_repo.git.config("--global", "user.name", "GitHub BOT")
 
 
 #########################################
