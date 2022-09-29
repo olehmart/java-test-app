@@ -98,6 +98,14 @@ DEPLOYMENTS_REPO = "https://{}:x-oauth-basic@github.com/{}/{}".format(GITHUB_TOK
                                                                       deployment_git_repo_name)
 deployments_repo = Repo.clone_from(DEPLOYMENTS_REPO, "{}".format(clone_folder))
 
+
+########
+# TEST #
+########
+deployments_repo.git.config("--global", "user.email" "automation@example.com")
+deployments_repo.git.config("--global", "user.name" "GitHub BOT")
+
+
 #########################################
 # Checking out to a new/existing branch #
 #########################################
