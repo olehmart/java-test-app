@@ -41,6 +41,8 @@ jobs:
             @semantic-release/exec
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      new_release_version: ${{ steps.semantic-release.outputs.new_release_version }}
 
   triggerDeployment:
     name: Trigger Deployment
@@ -68,7 +70,7 @@ jobs:
         run: python main.py
         env:
           APP_NAME: ${{ env.APP_NAME }}
-          NEW_VERSION: ${{ steps.semantic-release.outputs.new_release_version }}
+          NEW_VERSION: ${{ needs.release.outputs.new_release_version }}
           DEPLOYMENTS_REPO: ${{ env.DEPLOYMENTS_REPO }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEPLOYMENTS_DEV_BRANCH: ${{ env.DEPLOYMENTS_DEV_BRANCH }}
