@@ -14,7 +14,7 @@ NEW_VERSION = os.environ.get("NEW_VERSION")
 DEPLOYMENTS_PROJECT = os.environ.get("DEPLOYMENTS_PROJECT")
 DEPLOYMENTS_REPO_NAME = os.environ.get("DEPLOYMENTS_REPO_NAME")
 DEPLOYMENTS_DEV_BRANCH = os.environ.get("DEPLOYMENTS_DEV_BRANCH")
-DEPLOYMENTS_DEV_CONFIG_PATH = os.environ.get("DEPLOYMENTS_DEV_CONFIG_PATH")
+DEPLOYMENTS_DEV_CONFIG_FOLDER = os.environ.get("DEPLOYMENTS_DEV_CONFIG_FOLDER")
 #############
 # Variables #
 #############
@@ -62,24 +62,24 @@ else:
 # Setting a new version #
 #########################
 print("Updating {} version in deployments file to {} ...".format(APP_NAME, NEW_VERSION))
-with open('{}/{}'.format(clone_folder, DEPLOYMENTS_DEV_CONFIG_PATH)) as f:
+with open('{}/{}/{}.yml'.format(clone_folder, DEPLOYMENTS_DEV_CONFIG_FOLDER, APP_NAME)) as f:
     deployments = yaml.load(f, Loader=yaml.FullLoader)
-    if NEW_VERSION == deployments[APP_NAME]["artifact_version"]:
+    if NEW_VERSION == deployments["artifact_version"]:
         print("There is no change in version. Exiting...")
         sys.exit(1)
     else:
-        deployments[APP_NAME]["artifact_version"] = NEW_VERSION
+        deployments["artifact_version"] = NEW_VERSION
 
 ############################
 # Saving changes to a file #
 ############################
-with open('{}/{}'.format(clone_folder, DEPLOYMENTS_DEV_CONFIG_PATH), 'w') as f:
+with open('{}/{}/{}.yml'.format(clone_folder, DEPLOYMENTS_DEV_CONFIG_FOLDER, APP_NAME), 'w') as f:
     data = yaml.dump(deployments, f)
 
 ###################
 # Staging changes #
 ###################
-deployments_repo.git.add('{}'.format(DEPLOYMENTS_DEV_CONFIG_PATH))
+deployments_repo.git.add('{}/{}.yml'.format(DEPLOYMENTS_DEV_CONFIG_FOLDER, APP_NAME))
 
 #####################
 # Creating a commit #

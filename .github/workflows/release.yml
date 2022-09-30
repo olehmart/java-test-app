@@ -11,7 +11,7 @@ env:
   DEPLOYMENTS_PROJECT: olehmart
   DEPLOYMENTS_REPO_NAME: test-deployments
   DEPLOYMENTS_DEV_BRANCH: auto-deployment-dev
-  DEPLOYMENTS_DEV_CONFIG_PATH: dev/deployments.yaml
+  DEPLOYMENTS_DEV_CONFIG_FOLDER: dev
 
 jobs:
   release:
@@ -81,5 +81,5 @@ jobs:
           DEPLOYMENTS_PROJECT: ${{ env.DEPLOYMENTS_PROJECT }}
           DEPLOYMENTS_REPO_NAME: ${{ env.DEPLOYMENTS_REPO_NAME }}
           DEPLOYMENTS_DEV_BRANCH: ${{ env.DEPLOYMENTS_DEV_BRANCH }}
-          DEPLOYMENTS_DEV_CONFIG_PATH: ${{ env.DEPLOYMENTS_DEV_CONFIG_PATH }}
+          DEPLOYMENTS_DEV_CONFIG_FOLDER: ${{ env.DEPLOYMENTS_DEV_CONFIG_FOLDER }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
