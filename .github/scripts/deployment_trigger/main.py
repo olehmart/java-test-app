@@ -25,7 +25,7 @@ clone_folder = "./git-repo"
 # ENV variables check #
 #######################
 required_env_variables = ["APP_NAME", "NEW_VERSION", "DEPLOYMENTS_PROJECT", "DEPLOYMENTS_REPO_NAME",
-                          "DEPLOYMENTS_DEV_BRANCH", "DEPLOYMENTS_DEV_CONFIG_PATH"]
+                          "DEPLOYMENTS_DEV_BRANCH", "DEPLOYMENTS_DEV_CONFIG_FOLDER"]
 for variable in required_env_variables:
     if variable not in os.environ or os.environ.get(variable) == "":
         print("ERROR! {} variable is not set. Exiting...".format(variable))
