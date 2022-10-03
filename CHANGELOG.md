@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/olehmart/java-test-app/compare/v1.27.0...v1.28.0) (2022-10-03)
+
+
+### Features
+
+* update ([14d05af](https://github.com/olehmart/java-test-app/commit/14d05af4f4e716fe9455896be68869548e1ad8ca))
+
 # [1.27.0](https://github.com/olehmart/java-test-app/compare/v1.26.0...v1.27.0) (2022-09-30)
 
 
