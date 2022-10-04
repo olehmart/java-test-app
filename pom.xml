@@ -17,7 +17,7 @@
 
   <groupId>com.coveros.demo</groupId>
   <artifactId>helloworld</artifactId>
-  <version>1.30.0</version>
+  <version>1.31.0</version>
   <packaging>jar</packaging>
 
   <name>Hello World</name>
